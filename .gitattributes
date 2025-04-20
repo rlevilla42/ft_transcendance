@@ -1,0 +1,32 @@
+# 🔧 Force les fins de ligne Unix (LF) pour tous les fichiers texte
+* text=auto eol=lf
+
+# 🐚 Scripts shell
+*.sh     text eol=lf
+
+# ⚙️ Fichiers Docker & YAML
+*.yml    text eol=lf
+*.yaml   text eol=lf
+Dockerfile text eol=lf
+
+# 🧑‍💻 Fichiers Java / Maven
+*.java   text eol=lf
+*.xml    text eol=lf
+*.properties text eol=lf
+*.md     text eol=lf
+
+# 🧪 Test (ex: snapshots, config tests)
+*.snap   text eol=lf
+*.test   text eol=lf
+
+# 📝 Markdown, Git, VS Code
+*.md     text eol=lf
+*.gitignore text eol=lf
+*.code-workspace text eol=lf
+
+# 🧪 Pour éviter le reformatage aléatoire des fichiers binaires
+*.jar    binary
+*.png    binary
+*.jpg    binary
+*.gif    binary
+*.ico    binary
