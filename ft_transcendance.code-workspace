@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": "backend"
+    },
+    {
+      "path": "frontend"
+    },
+    {
+      "path": "postgresql"
+    }
+  ],
+  "settings": {
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive"
+  },
+  "files.exclude": {
+    "**/.env": false
+  },
+  "files.watcherExclude": {
+    "**/.env": false
+  }
+}

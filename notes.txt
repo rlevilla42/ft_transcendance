@@ -1,0 +1,55 @@
+sudo usermod -aG sudo <user_name>
+sudo apt update && sudo apt upgrade && sudo apt install git -y
+sudo apt install vim -y
+
+****************** Install docker ***************
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo   deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bullseye stable |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# install docker
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+#Test docker
+sudo docker run hello-world
+#Interact with a container
+docker exec -it <container name> /bin/bash // don't create new instance
+docker compose up --build -d
+
+# Script initialisation of SQL MYSQL_DATABASE run mysqld
+SHOW DATABASES;
+SHOW DATABASES LIKE 'db_wordpress';
+SELECT User, Host FROM mysql.user WHERE User = 'buakaw';
+SHOW GRANTS FOR 'buakaw'@'%';
+
+mysql -u root -p
+use db_wordpress;
+show tables;
+select * from db_wordpress.wp_users;
+docker exec -it mariadb mysql -u root -p
+
+.env file at the root of the docker compose yaml file
+
+docker compose down -v && docker compose down && rm -rf postgres-data/  && docker volume prune -f && docker system prune -a --volumes && docker compose up -d
+
+--------------- Postgres ------------
+-- directement depuis le docker
+psql -U db_user -h wifihost -p 5432 -d pg_db
+or
+psql -U db_user -d pg_db
+-- depuis l'host
+docker exec -it postgres psql -U db_user -h wifihost -p 5432 -d pg_db
+or
+docker exec -it postgres psql -U db_user -d pg_db
+
+sudo lsof -i :5432
+
+ \dt -- list of relation
+select * from mma; --select * from ${name};
