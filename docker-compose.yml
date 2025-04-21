@@ -28,3 +28,18 @@ services:
       - ./backend/.mvn:/app/.mvn
       - ./backend/mvnw:/app/mvnw
     command: ./mvnw spring-boot:run -Dspring-boot.run.fork=false
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/index.html:/app/index.html
+      - ./frontend/vite.config.ts:/app/vite.config.ts
+      - ./frontend/tsconfig.json:/app/tsconfig.json
+      - ./frontend/tsconfig.node.json:/app/tsconfig.node.json
+      - ./frontend/package.json:/app/package.json
+      - ./frontend/package-lock.json:/app/package-lock.json
+    command: npm run dev -- --host
