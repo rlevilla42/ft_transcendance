@@ -37,7 +37,11 @@ docker exec -it mariadb mysql -u root -p
 
 .env file at the root of the docker compose yaml file
 
-docker compose down -v && docker compose down && rm -rf postgres-data/  && docker volume prune -f && docker system prune -a --volumes && docker compose up -d
+docker compose down -v && rm -rf postgres-data/  && docker volume prune -f && docker system prune -a --volumes && docker compose up -d
+
+docker compose down -v
+docker compose up --build -d
+
 
 --------------- Postgres ------------
 -- directement depuis le docker
@@ -52,4 +56,4 @@ docker exec -it postgres psql -U db_user -d pg_db
 sudo lsof -i :5432
 
  \dt -- list of relation
-select * from mma; --select * from ${name};
+select * fro
