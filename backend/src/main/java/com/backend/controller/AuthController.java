@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.backend.dto.LoginDto;
+import com.backend.dto.LoginResponseDto;
 import com.backend.dto.RegisterDto;
 import com.backend.entity.User;
 import com.backend.service.UserService;
@@ -37,4 +38,11 @@ public class AuthController {
         User loginUser = userService.login(loginDto);
         return ResponseEntity.ok(loginUser);
     }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public ResponseEntity<LoginResponseDto> loginResponse(@RequestBody LoginDto loginDto) {
+        LoginResponseDto loginUser = userService.loginResponseDto(loginDto);
+        return ResponseEntity.ok(loginUser);
+    };
 }

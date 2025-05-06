@@ -56,4 +56,4 @@ docker exec -it postgres psql -U db_user -d pg_db
 sudo lsof -i :5432
 
  \dt -- list of relation
-select * fro
+select * from mma; --select * from ${name};

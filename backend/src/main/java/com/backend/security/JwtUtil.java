@@ -1,10 +1,12 @@
 package com.backend.security;
 
 import java.util.Date;
+import com.backend.entity.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,15 +29,21 @@ public class JwtUtil {
         .parseClaimsJws(token).getBody();
     };
 
-    public String extractUsername(String username) {
-        return getClaims(username).getSubject();
+    public String extractUsername(String token) {
+        return getClaims(token).getSubject();
     };
 
-    public boolean isTokenValid(String token) {
+    public boolean isTokenNotExpired(String token) {
         try {
             return getClaims(token).getExpiration().after(new Date());
         } catch (Exception e) {
             return false;
         }
+    };
+
+    public boolean validateToken(String token, User user) {
+        final String username = extractUsername(token);
+
+        return (username != null && username.equals(user.getUsername()) && isTokenNotExpired(token));
     };
 }
