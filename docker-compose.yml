@@ -27,7 +27,8 @@ services:
       - ./backend/pom.xml:/app/pom.xml
       - ./backend/.mvn:/app/.mvn
       - ./backend/mvnw:/app/mvnw
-    command: ./mvnw spring-boot:run -Dspring-boot.run.fork=false
+    command: sh -c "ls -l .mvn/wrapper && cat .mvn/wrapper/maven-wrapper.properties && ./mvnw spring-boot:run -Dspring-boot.run.fork=false"
+    #command: ./mvnw spring-boot:run -Dspring-boot.run.fork=false
 
   frontend:
     build: ./frontend

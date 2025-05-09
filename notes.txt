@@ -37,7 +37,7 @@ docker exec -it mariadb mysql -u root -p
 
 .env file at the root of the docker compose yaml file
 
-docker compose down -v && rm -rf postgres-data/  && docker volume prune -f && docker system prune -a --volumes && docker compose up -d
+docker compose down -v && rm -rf postgresql/*  && docker volume prune -f && docker system prune -a --volumes && docker compose up --build -d
 
 docker compose down -v
 docker compose up --build -d
