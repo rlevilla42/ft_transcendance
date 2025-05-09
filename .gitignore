@@ -1,0 +1,25 @@
+# Java
+target/
+*.class
+*.jar
+*.log
+
+# Maven
+.mvn/
+.settings/
+.idea/
+*.iml
+
+# Node.js
+node_modules/
+dist/
+
+# OS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Docker
+postgresql/postgres-data/
+.env
