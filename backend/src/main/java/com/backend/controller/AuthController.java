@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.backend.dto.LoginDto;
 import com.backend.dto.LoginResponseDto;
 import com.backend.dto.RegisterDto;
+import com.backend.dto.UserResponseDto;
 import com.backend.entity.User;
 import com.backend.service.UserService;
 
@@ -32,17 +33,17 @@ public class AuthController {
         return ResponseEntity.ok(registeredUser);
     };
 
+    // @PostMapping("/login")
+    // @ResponseBody
+    // public ResponseEntity<User> login(@RequestBody LoginDto loginDto) {
+    //     User loginUser = userService.login(loginDto);
+    //     return ResponseEntity.ok(loginUser);
+    // } renvoi directe le entity avec toute les donnés du user c une folie mdr !!!!
+
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<User> login(@RequestBody LoginDto loginDto) {
-        User loginUser = userService.login(loginDto);
-        return ResponseEntity.ok(loginUser);
-    }
-
-    @PostMapping("/login-response")
-    @ResponseBody
-    public ResponseEntity<LoginResponseDto> loginResponse(@RequestBody LoginDto loginDto) {
-        LoginResponseDto loginUser = userService.loginResponseDto(loginDto);
+    public ResponseEntity<LoginResponseDto> login(@RequestBody LoginDto loginDto) {
+        LoginResponseDto loginUser = userService.login(loginDto);
         return ResponseEntity.ok(loginUser);
     };
 }

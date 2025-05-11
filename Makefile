@@ -1,24 +1,16 @@
 .PHONY: up down build re logs backend postgres clean returbo help
 
-# 🚀 Démarrer tous les conteneurs (dev)
-up:
-	docker compose up -d
+# 🔁 Rebuild + restart
+re:	down
+	docker compose up --build -d
 
 # ⛔ Stop + remove containers & volumes anonymes
 down:
-	docker compose down -v --remove-orphans
-
-# 🔨 Rebuild (sans clean)
-build:
-	docker compose build
-
-# 🔁 Rebuild + restart
-re: down build up
+	docker compose down -v --remove-orphans && rm -rf ./postgresql/postgres-data
 
 # 🧼 Nettoyage complet (volumes, cache Docker)
 clean: down
 	docker system prune -af --volumes
-	rm -rf ./postgresql/postgres-data/*
 
 # 🔁 Rebuild total (⚠️ lent mais propre)
 returbo: clean

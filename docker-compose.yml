@@ -23,12 +23,12 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./backend/src:/app/src        # Seulement le code source
+      - ./backend/src:/app/src        # Seulement le code source est necessaire pour le dev en hot reload, er eventuellement le pom.xml aussi pour les dependnace si j'en ajoute au fur et a mesure
       - ./backend/pom.xml:/app/pom.xml
-      - ./backend/.mvn:/app/.mvn
-      - ./backend/mvnw:/app/mvnw
-    command: sh -c "ls -l .mvn/wrapper && cat .mvn/wrapper/maven-wrapper.properties && ./mvnw spring-boot:run -Dspring-boot.run.fork=false"
-    #command: ./mvnw spring-boot:run -Dspring-boot.run.fork=false
+      # - ./backend/.mvn:/app/.mvn    #sinon deadlock
+      # - ./backend/mvnw:/app/mvnw
+    #command: sh -c "ls -l .mvn/wrapper && cat .mvn/wrapper/maven-wrapper.properties && ./mvnw spring-boot:run -Dspring-boot.run.fork=false"
+    command: ./mvnw spring-boot:run -Dspring-boot.run.fork=false
 
   frontend:
     build: ./frontend
